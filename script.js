@@ -59,9 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
             continent: "Asia",
             size: "wide", // Changed to 'wide' to make it span 2 columns
             images: [
-                { src: "./images/asia-highlight-1.jpg", alt: "Annapurna Massif" },
-                { src: "./images/asia-highlight-2.jpg", alt: "Mount Everest Base Camp" },
-                { src: "./images/asia-highlight-3.jpg", alt: "Himalayan Peaks" }
+                { src: "./images/mountain-7.jpg", alt: "Annapurna Massif", headerImageSuffix: "7" },
+                { src: "./images/mountain-8.jpg", alt: "Mount Everest Base Camp", headerImageSuffix: "8" },
+                { src: "./images/mountain-9.jpg", alt: "Himalayan Peaks", headerImageSuffix: "9" }
             ]
         },
         {
@@ -116,9 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
             continent: "Europe",
             size: "wide",
             images: [
-                { src: "./images/europe-highlight-1.jpg", alt: "Dolomites, Italy" },
-                { src: "./images/europe-highlight-2.jpg", alt: "Swiss Alps Panorama" },
-                { src: "./images/europe-highlight-3.jpg", alt: "Pyrenees Sunset" }
+                { src: "./images/mountain-10.jpg", alt: "Dolomites, Italy", headerImageSuffix: "10" },
+                { src: "./images/mountain-11.jpg", alt: "Swiss Alps Panorama", headerImageSuffix: "11" },
+                { src: "./images/mountain-12.jpg", alt: "Pyrenees Sunset", headerImageSuffix: "12" }
             ]
         },
         {
@@ -162,9 +162,9 @@ document.addEventListener('DOMContentLoaded', function () {
             continent: "Africa",
             size: "wide",
             images: [
-                { src: "./images/africa-highlight-1.jpg", alt: "Table Mountain" },
-                { src: "./images/africa-highlight-2.jpg", alt: "Simien Mountains" },
-                { src: "./images/africa-highlight-3.jpg", alt: "Drakensberg Peaks" }
+                { src: "./images/mountain-13.jpg", alt: "Table Mountain", headerImageSuffix: "13" },
+                { src: "./images/mountain-14.jpg", alt: "Simien Mountains", headerImageSuffix: "14" },
+                { src: "./images/mountain-15.jpg", alt: "Drakensberg Peaks", headerImageSuffix: "15" }
             ]
         },
         {
@@ -208,9 +208,9 @@ document.addEventListener('DOMContentLoaded', function () {
             continent: "Americas",
             size: "wide",
             images: [
-                { src: "./images/americas-highlight-1.jpg", alt: "Patagonia Peaks" },
-                { src: "./images/americas-highlight-2.jpg", alt: "Rocky Mountains" },
-                { src: "./images/americas-highlight-3.jpg", alt: "Andes Range" }
+                { src: "./images/mountain-16.jpg", alt: "Patagonia Peaks", headerImageSuffix: "16" },
+                { src: "./images/mountain-1.jpg", alt: "Rocky Mountains", headerImageSuffix: "1" },
+                { src: "./images/mountain-7.jpg", alt: "Andes Range", headerImageSuffix: "7" }
             ]
         },
         {
@@ -282,8 +282,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateHeaderBackground(classSuffix) {
         // Dynamically create a list of all possible header-bg-X classes
         const allBgClasses = allMountainsData.filter(item => item.type === "mountain").map(m => `header-bg-${m.headerImageSuffix}`).join(' ');
-        headerBg.classList.remove('header-bg-default', ...allBgClasses.split(' '));
         
+        // Collect all headerImageSuffixes from carousel images
+        const allCarouselBgClasses = allMountainsData.filter(item => item.type === "carousel")
+            .flatMap(carousel => carousel.images.map(img => `header-bg-${img.headerImageSuffix}`))
+            .filter(suffix => suffix !== 'header-bg-undefined') // Filter out any undefined suffixes
+            .join(' ');
+
+        // Combine all classes to remove
+        const classesToRemove = ['header-bg-default', ...allBgClasses.split(' '), ...allCarouselBgClasses.split(' ')];
+        
+        // Remove all classes before adding the new one
+        headerBg.classList.remove(...classesToRemove.filter(Boolean)); // Filter out any empty strings
+
         if (classSuffix === 'default') {
             headerBg.classList.add('header-bg-default');
         } else {
@@ -409,6 +420,13 @@ document.addEventListener('DOMContentLoaded', function () {
             carouselImage.src = images[currentSlide].src;
             carouselImage.alt = images[currentSlide].alt;
             updateDots();
+            // Update header background when carousel image changes
+            const currentCarouselImage = images[currentSlide];
+            if (currentCarouselImage.headerImageSuffix) {
+                updateHeaderBackground(currentCarouselImage.headerImageSuffix);
+            } else {
+                updateHeaderBackground('default'); // Fallback if no specific suffix
+            }
         }
 
         images.forEach((_, index) => {
@@ -709,3 +727,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // This is more complex and might involve an IntersectionObserver on each section
     // For now, the button and arrow keys provide explicit control.
 });
+    

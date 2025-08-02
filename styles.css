@@ -90,40 +90,40 @@ body {
 }
 /* New background classes for carousel highlight images (17-28) */
 .header-static-global.header-bg-17 {
-    background-image: url('./images/asia-highlight-1.jpg');
+    background-image: url('./images/mountain-7.jpg'); /* Asia Highlight 1 */
 }
 .header-static-global.header-bg-18 {
-    background-image: url('./images/asia-highlight-2.jpg');
+    background-image: url('./images/mountain-8.jpg'); /* Asia Highlight 2 */
 }
 .header-static-global.header-bg-19 {
-    background-image: url('./images/asia-highlight-3.jpg');
+    background-image: url('./images/mountain-9.jpg'); /* Asia Highlight 3 */
 }
 .header-static-global.header-bg-20 {
-    background-image: url('./images/europe-highlight-1.jpg');
+    background-image: url('./images/mountain-10.jpg'); /* Europe Highlight 1 */
 }
 .header-static-global.header-bg-21 {
-    background-image: url('./images/europe-highlight-2.jpg');
+    background-image: url('./images/mountain-11.jpg'); /* Europe Highlight 2 */
 }
 .header-static-global.header-bg-22 {
-    background-image: url('./images/europe-highlight-3.jpg');
+    background-image: url('./images/mountain-12.jpg'); /* Europe Highlight 3 */
 }
 .header-static-global.header-bg-23 {
-    background-image: url('./images/africa-highlight-1.jpg');
+    background-image: url('./images/mountain-13.jpg'); /* Africa Highlight 1 */
 }
 .header-static-global.header-bg-24 {
-    background-image: url('./images/africa-highlight-2.jpg');
+    background-image: url('./images/mountain-14.jpg'); /* Africa Highlight 2 */
 }
 .header-static-global.header-bg-25 {
-    background-image: url('./images/africa-highlight-3.jpg');
+    background-image: url('./images/mountain-15.jpg'); /* Africa Highlight 3 */
 }
 .header-static-global.header-bg-26 {
-    background-image: url('./images/americas-highlight-1.jpg');
+    background-image: url('./images/mountain-16.jpg'); /* Americas Highlight 1 */
 }
 .header-static-global.header-bg-27 {
-    background-image: url('./images/americas-highlight-2.jpg');
+    background-image: url('./images/mountain-1.jpg'); /* Americas Highlight 2 */
 }
 .header-static-global.header-bg-28 {
-    background-image: url('./images/americas-highlight-3.jpg');
+    background-image: url('./images/mountain-2.jpg'); /* Americas Highlight 3 */
 }
 
 
@@ -700,7 +700,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Higher z-index to ensure it's on top */
+    z-index: 99999; /* Increased z-index */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -720,13 +720,13 @@ body {
     width: 90%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
-    z-index: 10000; /* Even higher z-index for content */
+    z-index: 100000; /* Increased z-index */
     transform: translateY(20px); 
     opacity: 0; 
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
-#modal-modal-overlay.visible #mountain-modal-content { /* Corrected selector */
+#mountain-modal-overlay.visible #mountain-modal-content { /* Corrected selector */
     transform: translateY(0);
     opacity: 1;
 }
