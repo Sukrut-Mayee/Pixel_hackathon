@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetheria</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- This div will serve as the persistent, global background image -->
+    <!-- IMPORTANT: Removed inline style. Background is now set purely by CSS classes via JS. -->
+    <div class="header-static-global" id="header-bg"></div>
+
+    <div id="loader-page">
+        <video id="loader-video" autoplay muted loop>
+            <source src="images/Drone Shot.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="video-overlay"></div>
+        <div id="loader-content">
+            <h1 id="loader-text">COMMENCING YOUR ASCENSION</h1>
+            <h2 id="loader-counter">0%</h2>
+            <div id="loading-bar-container">
+                <div id="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-homepage" style="opacity: 0;">
+
+        <header class="header" id="header-section"> <!-- Added ID for scrolling -->
+            <!-- The background image div is now global and outside this header -->
+            <div class="container header-container">
+                <div class="header-left-list">
+                    <div class="mountain-box" data-image="./images/mountain-2.jpg" data-mountain-name="Mount Everest">
+                        <span>Mount Everest</span>
+                    </div>
+                    <div class="mountain-box" data-image="./images/mountain-5.jpg" data-mountain-name="K2">
+                        <span>K2</span>
+                    </div>
+                    <div class="mountain-box" data-image="./images/mountain-3.jpg" data-mountain-name="Matterhorn">
+                        <span>Matterhorn</span>
+                    </div>
+                    <div class="mountain-box" data-image="./images/mountain-4.jpg" data-mountain-name="Mount Fuji">
+                        <span>Mount Fuji</span>
+                    </div>
+                </div>
+                <div class="header-center-content">
+                    <h1 class="main-title">Aetheria</h1>
+                    <p class="subtitle">Majestic Mountains of the World</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Marquee items now include an image and a title -->
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-1.jpg" alt="Mount Kilimanjaro" class="marquee-item-image">
+                    <span class="marquee-item-title">Kilimanjaro</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-2.jpg" alt="Mount Elbrus" class="marquee-image">
+                    <span class="marquee-item-title">Elbrus</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-3.jpg" alt="Mont Blanc" class="marquee-image">
+                    <span class="marquee-item-title">Mont Blanc</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-4.jpg" alt="Denali" class="marquee-image">
+                    <span class="marquee-item-title">Denali</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-5.jpg" alt="Aconcagua" class="marquee-image">
+                    <span class="marquee-item-title">Aconcagua</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-1.jpg" alt="Matterhorn" class="marquee-image">
+                    <span class="marquee-item-title">Matterhorn</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-2.jpg" alt="K2" class="marquee-image">
+                    <span class="marquee-item-title">K2</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-3.jpg" alt="Mount Everest" class="marquee-image">
+                    <span class="marquee-item-title">Everest</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-4.jpg" alt="Mount Fuji" class="marquee-image">
+                    <span class="marquee-item-title">Fuji</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-5.jpg" alt="Mount Logan" class="marquee-image">
+                    <span class="marquee-item-title">Mount Logan</span>
+                </div>
+                <!-- Duplicate the entire set for seamless looping -->
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-1.jpg" alt="Mount Kilimanjaro" class="marquee-image">
+                    <span class="marquee-item-title">Kilimanjaro</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-2.jpg" alt="Mount Elbrus" class="marquee-image">
+                    <span class="marquee-item-title">Elbrus</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-3.jpg" alt="Mont Blanc" class="marquee-image">
+                    <span class="marquee-item-title">Mont Blanc</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-4.jpg" alt="Denali" class="marquee-image">
+                    <span class="marquee-item-title">Denali</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-5.jpg" alt="Aconcagua" class="marquee-image">
+                    <span class="marquee-item-title">Aconcagua</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-1.jpg" alt="Matterhorn" class="marquee-image">
+                    <span class="marquee-item-title">Matterhorn</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-2.jpg" alt="K2" class="marquee-image">
+                    <span class="marquee-item-title">K2</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-3.jpg" alt="Mount Everest" class="marquee-image">
+                    <span class="marquee-item-title">Everest</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-4.jpg" alt="Mount Fuji" class="marquee-image">
+                    <span class="marquee-item-title">Fuji</span>
+                </div>
+                <div class="marquee-item-box">
+                    <img src="./images/mountain-5.jpg" alt="Mount Logan" class="marquee-image">
+                    <span class="marquee-item-title">Mount Logan</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="intro-section" id="intro-section"> <!-- Added ID for scrolling -->
+            <div class="container">
+                <h2 class="section-title">Explore the World's Grandest Peaks</h2>
+                <p class="intro-text">
+                    Aetheria is your guide to the most magnificent mountain ranges on Earth. From the highest peaks in the Himalayas to the iconic silhouettes of the Alps, explore the geological wonders that shape our planet and inspire a sense of wonder and adventure.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid-section">
+            <div class="container">
+                <h2 class="section-title">Famous Mountains of the World</h2>
+                
+                <div class="image-grid" id="mountain-cards-grid">
+                    <!-- Mountain categories will be dynamically loaded here by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer js-fade-in" id="footer-section"> <!-- Added ID for scrolling -->
+            <div class="container footer-container">
+                <h3 class="footer-title">Aetheria</h3>
+                <p class="footer-text">Created for the Webathon Project</p>
+                <p class="copyright">© 2023 Mountain Explorer</p>
+            </div>
+        </footer>
+
+        <!-- New: Navigation Button -->
+        <button id="next-section-btn" class="scroll-nav-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+    </div>
+
+    <!-- New: Mountain Info Modal -->
+    <div id="mountain-modal-overlay">
+        <div id="mountain-modal-content">
+            <button id="modal-close-btn">&times;</button>
+            <h3 id="modal-mountain-title"></h3>
+            <p id="modal-mountain-description"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
