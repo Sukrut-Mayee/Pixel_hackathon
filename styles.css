@@ -1,0 +1,887 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure html and body take full viewport height */
+html, body {
+    height: 100%; 
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    background-color: #0A192F; /* Fallback background color */
+    color: #E0E4E7;
+    line-height: 1.6;
+    overflow-y: scroll; /* Explicitly make body scrollable vertically */
+}
+
+/* Global Fixed Background for the Header */
+.header-static-global {
+    position: fixed; /* Stays in place */
+    top: 0;
+    left: 0;
+    width: 100%;    
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -3; /* Ensures it's behind the loader and video overlay */
+    transition: background-image 0.5s ease-in-out, filter 0.5s ease-in-out; /* Added filter transition */
+}
+
+/* Default background class (applied initially by JS) */
+.header-static-global.header-bg-default {
+    background-image: url('./images/mountain-1.jpg');
+}
+
+/* Specific background classes for hover effects */
+.header-static-global.header-bg-2 {
+    background-image: url('./images/mountain-2.jpg');
+}
+.header-static-global.header-bg-5 {
+    background-image: url('./images/mountain-5.jpg');
+}
+.header-static-global.header-bg-3 {
+    background-image: url('./images/mountain-3.jpg');
+}
+.header-static-global.header-bg-4 {
+    background-image: url('./images/mountain-4.jpg');
+}
+/* New background classes for additional images */
+.header-static-global.header-bg-6 {
+    background-image: url('./images/mountain-6.jpg');
+}
+.header-static-global.header-bg-7 {
+    background-image: url('./images/mountain-7.jpg');
+}
+.header-static-global.header-bg-8 {
+    background-image: url('./images/mountain-8.jpg');
+}
+/* New background classes for dynamically loaded images */
+.header-static-global.header-bg-9 {
+    background-image: url('./images/mountain-9.jpg');
+}
+.header-static-global.header-bg-10 {
+    background-image: url('./images/mountain-10.jpg');
+}
+.header-static-global.header-bg-11 {
+    background-image: url('./images/mountain-11.jpg');
+}
+.header-static-global.header-bg-12 {
+    background-image: url('./images/mountain-12.jpg');
+}
+.header-static-global.header-bg-13 {
+    background-image: url('./images/mountain-13.jpg');
+}
+.header-static-global.header-bg-14 {
+    background-image: url('./images/mountain-14.jpg');
+}
+.header-static-global.header-bg-15 {
+    background-image: url('./images/mountain-15.jpg');
+}
+.header-static-global.header-bg-16 {
+    background-image: url('./images/mountain-16.jpg');
+}
+/* New background classes for carousel highlight images (17-28) */
+.header-static-global.header-bg-17 {
+    background-image: url('./images/asia-highlight-1.jpg');
+}
+.header-static-global.header-bg-18 {
+    background-image: url('./images/asia-highlight-2.jpg');
+}
+.header-static-global.header-bg-19 {
+    background-image: url('./images/asia-highlight-3.jpg');
+}
+.header-static-global.header-bg-20 {
+    background-image: url('./images/europe-highlight-1.jpg');
+}
+.header-static-global.header-bg-21 {
+    background-image: url('./images/europe-highlight-2.jpg');
+}
+.header-static-global.header-bg-22 {
+    background-image: url('./images/europe-highlight-3.jpg');
+}
+.header-static-global.header-bg-23 {
+    background-image: url('./images/africa-highlight-1.jpg');
+}
+.header-static-global.header-bg-24 {
+    background-image: url('./images/africa-highlight-2.jpg');
+}
+.header-static-global.header-bg-25 {
+    background-image: url('./images/africa-highlight-3.jpg');
+}
+.header-static-global.header-bg-26 {
+    background-image: url('./images/americas-highlight-1.jpg');
+}
+.header-static-global.header-bg-27 {
+    background-image: url('./images/americas-highlight-2.jpg');
+}
+.header-static-global.header-bg-28 {
+    background-image: url('./images/americas-highlight-3.jpg');
+}
+
+
+/* New: Blur effect for the background image */
+.header-static-global.header-bg-blurred {
+    filter: blur(5px); /* Apply a 5px blur */
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Loader Styles */
+#loader-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0A192F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease-in-out; /* Loader fade-out duration */
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+#loader-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* Above global background, below overlay */
+}
+
+#video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1; /* Above video, below loader content */
+}
+
+#loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F0F2F5;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#loader-text {
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 0;
+}
+
+#loader-counter {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-top: 0.2em;
+}
+
+#loading-bar-container {
+    width: 250px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0;
+    background-color: #A1D11B;
+    transition: width 0.1s linear;
+}
+
+#loader-page.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Main Homepage Styles */
+#main-homepage {
+    opacity: 0; /* Initial state, hidden */
+    transition: opacity 1s ease-in-out; /* Smooth fade-in */
+    /* Ensure it takes up space even if hidden by opacity */
+    width: 100%;
+    min-height: 100vh; /* Ensure it covers the viewport */
+    position: relative; /* To contain its children */
+    z-index: 10; /* Above the global background */
+}
+
+
+/* Header Styles */
+.header {
+    padding: 0;
+    position: relative; 
+    overflow: hidden;
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-container {
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+    background-color: transparent;
+    flex-wrap: wrap;
+    text-align: center;
+    height: 100vh; 
+}
+
+.header-left-list {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1.5rem 1rem;
+    border-radius: 0 12px 12px 0; 
+    max-width: 200px;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+}
+
+.header-left-list.animate-in {
+    opacity: 1;
+}
+
+.mountain-box {
+    color: #E0E4E7;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent; 
+    border-image: linear-gradient(to right, #A1D11B, #475569); 
+    border-image-slice: 1;
+    border-radius: 12px; 
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, border-image 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    letter-spacing: 0.5px; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+}
+
+.mountain-box:hover {
+    background-color: rgba(161, 209, 27, 0.2); 
+    transform: translateX(8px) scale(1.02); 
+    box-shadow: 0 8px 25px rgba(161, 209, 27, 0.4), 0 0 15px rgba(161, 209, 27, 0.3); 
+    border-image: linear-gradient(to right, #E0E4E7, #A1D11B); 
+    border-image-slice: 1;
+}
+
+.header-center-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+/* New styles for title and subtitle animation */
+.main-title, .subtitle {
+    opacity: 0;
+    transform: translateY(30px); 
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.main-title.animate-in, .subtitle.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #A1D11B;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .header-left-list {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-bottom: 2rem;
+        background-color: rgba(0, 0, 0, 0.3); 
+    }
+}
+
+/* Marquee Styles */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #1A2E44;
+    padding: 12px 0;
+    display: flex; 
+    align-items: center; 
+    position: relative; 
+    height: 120px; 
+}
+
+.marquee-content {
+    display: flex; 
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused; 
+}
+
+.marquee-item-box {
+    position: relative; 
+    height: 90px; 
+    width: 160px; 
+    margin: 0 15px; 
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; 
+}
+
+.marquee-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.marquee-item-title {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #E0E4E7;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: normal; 
+    max-width: calc(100% - 10px); 
+    text-align: right;
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); 
+    }
+}
+
+/* Introduction Section */
+.intro-section {
+    padding: 3rem 1.5rem;
+    background-color: #F0F2F5;
+}
+
+.intro-section .section-title, .intro-section .intro-text {
+    color: #333333;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.intro-text {
+    font-size: 1.125rem;
+    color: #4b5563;
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Grid Section */
+.grid-section {
+    background-color: #F0F2F5;
+    padding: 3rem 1.5rem;
+}
+
+.grid-section .section-title {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Styles for Continent Sections */
+.continent-section {
+    margin-bottom: 4rem; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+
+.continent-title {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    color: #0A192F; 
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.continent-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #A1D11B, #475569);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+.continent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    grid-auto-rows: auto; 
+    gap: 24px; 
+    align-items: start; 
+    grid-auto-flow: dense; /* Added to help fill gaps */
+}
+
+
+/* Mountain Cards - Base Styles */
+.mountain-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; 
+}
+
+.mountain-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.mountain-image {
+    height: 200px; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mountain-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Specific styles for different card sizes */
+.mountain-card.large, .carousel-card.large { /* Apply large sizing to carousel too */
+    grid-column: span 2; 
+    grid-row: span 2; 
+}
+
+.mountain-card.large .mountain-image, .carousel-card.large .carousel-image-wrapper { /* Apply image height to carousel image wrapper */
+    height: 100%; 
+    min-height: 400px; 
+}
+
+/* For cards that might span 2 columns but not 2 rows (e.g., a wider card) */
+.mountain-card.wide, .carousel-card.wide {
+    grid-column: span 2;
+}
+
+/* For cards that might span 2 rows but not 2 columns (e.g., a taller card) */
+.mountain-card.tall, .carousel-card.tall {
+    grid-row: span 2;
+}
+
+
+.card-content {
+    padding: 1.5rem;
+    color: #333333;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; 
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+/* New tag color themes */
+.tag-blue { background-color: #2F3C47; color: #E0E4E7; }
+.tag-purple { background-color: #A1D11B; color: #333333; }
+.tag-green { background-color: #013220; color: #E0E4E7; }
+.tag-red { background-color: #0A192F; color: #E0E4E7; }
+.tag-amber { background-color: #64748B; color: #E0E4E7; }
+.tag-sky { background-color: #F0F2F5; color: #333333; }
+
+
+.elevation {
+    color: #6b7280;
+}
+
+/* Footer */
+.footer {
+    background-color: #0A192F;
+    color: #E0E4E7;
+    padding: 2rem 1.5rem;
+    min-height: 50vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-container {
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.footer-text {
+    margin-bottom: 1rem;
+    }
+
+.copyright {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .continent-title {
+        font-size: 1.8rem;
+    }
+    .continent-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        gap: 16px;
+    }
+    .mountain-card.large, .carousel-card.large { /* Apply mobile sizing to carousel */
+        grid-column: span 1; 
+        grid-row: span 1; 
+    }
+    .mountain-card.large .mountain-image, .carousel-card.large .carousel-image-wrapper {
+        min-height: 250px; 
+    }
+    .mountain-card.wide, .mountain-card.tall, .carousel-card.wide, .carousel-card.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .continent-section {
+        min-height: auto; 
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .footer {
+        min-height: auto; 
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .continent-grid {
+        grid-template-columns: 1fr; 
+    }
+    .mountain-image {
+        height: 180px;
+    }
+    .mountain-card.large .mountain-image, .carousel-card.large .carousel-image-wrapper {
+        min-height: 200px;
+    }
+}
+
+/* New CSS for fade-in on scroll effect */
+.js-fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.slideshow-image,
+.slideshow-image.active,
+.slideshow-controls,
+.slideshow-dots,
+.slideshow-btn,
+.dot {
+    display: none !important;
+}
+
+/* New: Modal Styles */
+#mountain-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Higher z-index to ensure it's on top */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#mountain-modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#mountain-modal-content {
+    background-color: #F0F2F5; 
+    color: #333333;
+    padding: 2.5rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10000; /* Even higher z-index for content */
+    transform: translateY(20px); 
+    opacity: 0; 
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+#modal-modal-overlay.visible #mountain-modal-content { /* Corrected selector */
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+#modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #64748B;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#modal-close-btn:hover {
+    color: #0A192F;
+}
+
+#modal-mountain-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #A1D11B; 
+    text-align: center;
+}
+
+#modal-mountain-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Style for the scroll navigation button */
+.scroll-nav-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(161, 209, 27, 0.8);
+    color: #0A192F;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 900; /* Above most content, below modal */
+}
+
+.scroll-nav-btn:hover {
+    background-color: #A1D11B;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.scroll-nav-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Carousel Specific Styles */
+.carousel-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default; /* Not clickable for modal, but internal elements are */
+    min-height: 200px; /* Base height for normal carousel card */
+    min-width: 280px; /* Ensure it respects grid min-width */
+}
+
+.carousel-image-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.5s ease-in-out; /* Smooth image transition */
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Above image */
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-nav-btn.prev {
+    left: 10px;
+}
+
+.carousel-nav-btn.next {
+    right: 10px;
+}
+
+.carousel-nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10; /* Above image */
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background-color: #A1D11B; /* Active dot color */
+    transform: scale(1.2);
+}
